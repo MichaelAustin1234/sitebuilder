@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+/.vscode
+/.idea
+/.zed
+/.nova
+
+# Laravel — all secrets are in .env (ignored by api/.gitignore)
+umkm-sitebuilder-api/.env
+umkm-sitebuilder-api/.env.production
+
+# Next.js — all secrets are in .env.local (ignored by web/.gitignore)
+umkm-sitebuilder-web/.env.local
+umkm-sitebuilder-web/.env.production.local
+
+# Deps & build artefacts
+umkm-sitebuilder-api/vendor/
+umkm-sitebuilder-web/node_modules/
+umkm-sitebuilder-web/.next/
+
