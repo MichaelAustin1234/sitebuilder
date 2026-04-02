@@ -9,6 +9,8 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
+    console.log("[register] API_URL =", API_URL);
+
     const laravelRes = await fetch(`${API_URL}/api/v1/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -16,6 +18,7 @@ export async function POST(request: NextRequest) {
     });
 
     const json = await laravelRes.json();
+    console.log("[register] Laravel status =", laravelRes.status, "body =", JSON.stringify(json));
 
     if (!laravelRes.ok) {
       return NextResponse.json(json, { status: laravelRes.status });
@@ -32,8 +35,10 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ success: true, message: json.message, data: { user: json.data.user } });
-  } catch {
-    return NextResponse.json({ success: false, message: "Server error" }, { status: 500 });
+  } catch (err) {
+    console.error("[register] Error:", err);
+    const message = err instanceof Error ? err.message : "Server error";
+    return NextResponse.json({ success: false, message }, { status: 500 });
   }
 }
 
