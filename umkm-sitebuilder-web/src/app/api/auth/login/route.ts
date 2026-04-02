@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const API_URL = process.env.API_URL ?? process.env.API_URL ?? process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 const COOKIE_NAME = "auth_token";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 
